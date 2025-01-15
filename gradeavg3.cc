@@ -33,7 +33,6 @@ int main() {
         }
 
         vector<double> all_hw = {hw1, hw2, hw3};
-
         sort(all_hw.begin(), all_hw.end());
 
         double median = all_hw[1];
@@ -49,15 +48,16 @@ int main() {
     cout << endl;
 
     streamsize prec = cout.precision();
+    cout << setprecision(3);
+
     typedef vector<string>::size_type vec_sz;
     vec_sz size = student_names.size();
-
-    cout << setprecision(3);
     for (vec_sz i = 0; i < size; i++) { 
         cout << "Student name: " << student_names[i] << endl;
         cout << "Student final grade: " << student_final_grades[i] << endl;
         cout << endl;
     }
+
     setprecision(prec);
 
     return 0;
