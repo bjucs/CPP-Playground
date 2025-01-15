@@ -6,6 +6,14 @@
 
 using namespace std;
 
+double calculate_final_grade(vector<double> hw_scores, double midterm_score, double final_score) { 
+    sort(hw_scores.begin(), hw_scores.end());
+
+    // Since hw_scores is of fixed size 3 
+    double median = hw_scores[1];
+    return (0.2 * midterm_score) + (0.4 * final_score) + (0.4 * median);
+}
+
 // Exercise 3-5 
 int main() { 
     cout << "Please enter your first name: ";
@@ -33,10 +41,7 @@ int main() {
         }
 
         vector<double> all_hw = {hw1, hw2, hw3};
-        sort(all_hw.begin(), all_hw.end());
-
-        double median = all_hw[1];
-        double total_score = (0.2 * midterm) + (0.4 * final) + (0.4 * median);
+        double total_score = calculate_final_grade(all_hw, midterm, final);
 
         student_names.push_back(name);
         student_final_grades.push_back(total_score);
