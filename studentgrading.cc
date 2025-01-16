@@ -4,6 +4,7 @@
 #include <limits>
 #include <ios>
 #include <sstream> 
+#include <iomanip> 
 
 using std::string;
 using std::vector;
@@ -11,6 +12,7 @@ using std::domain_error;
 using std::cout;
 using std::cin;
 using std::endl;
+using std::setprecision;
 using std::numeric_limits;
 using std::streamsize;
 using std::istringstream;
@@ -37,6 +39,19 @@ double get_median(vector<double> values) {
 
 double calculate_final_grade(double midterm_score, double final_score, double hw_score) { 
     return (0.2 * midterm_score) + (0.4 * final_score) + (0.4 * hw_score);
+}
+
+void display_final_output(vector<Student_info> students) { 
+    streamsize prec = cout.precision();
+    cout << setprecision(3);
+
+    for (auto it = students.begin(); it != students.end(); it++) { 
+        cout << endl;
+        cout << "Student name: " << it->name << endl;
+        cout << "Student final grade: " << calculate_final_grade(it->midterm, it->final, get_median(it->homework)) << endl;
+    }
+
+    setprecision(prec);
 }
 
 int main() { 
@@ -79,6 +94,10 @@ int main() {
                 cout << "Incorrect number of arguments (must have name, midterm & final exam grades, and at least one HW)" << endl;
             }
         }
+    }
+
+    if (students.size() != 0) { 
+        display_final_output(students);
     }
 
     return 0;
