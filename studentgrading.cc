@@ -5,6 +5,7 @@
 #include <ios>
 #include <sstream> 
 #include <iomanip> 
+#include "student_info.h"
 
 using std::string;
 using std::vector;
@@ -17,12 +18,6 @@ using std::numeric_limits;
 using std::streamsize;
 using std::istringstream;
 using std::ws;
-
-struct Student_info { 
-    string name;
-    double midterm, final;
-    vector<double> homework;
-};
 
 double get_median(vector<double> values) { 
     if (values.size() == 0) { 
@@ -54,6 +49,10 @@ void display_final_output(vector<Student_info> students) {
     setprecision(prec);
 }
 
+/* Compilation flag used to avoid registering `main` of studentgrading.cc
+when only the helper functions are needed */ 
+
+#ifndef HELPER_MODE
 int main() { 
     bool continue_input = true;
     vector<Student_info> students;
@@ -102,3 +101,4 @@ int main() {
 
     return 0;
 }
+#endif
