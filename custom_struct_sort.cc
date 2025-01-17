@@ -9,6 +9,8 @@ bool compare(const Student_info& s1, const Student_info& s2) {
 }
 
 void sort_by_grade(vector<Student_info>& students) { 
+    /* `sort(...)` can take in a custom `compare(...)` function so long 
+    as it is valid for the types passed in */
     sort(students.begin(), students.end(), compare);
 }
 
@@ -30,6 +32,9 @@ bool test_css_out_of_order() {
     display_final_output(students);
 
     vector<Student_info> expected_students = {s3, s1, s2};
+    /* Even though vectors have built in support for the `==` operator, 
+    it needs to be supported for the underlying type (e.g. `Student_info`) 
+    as well, which can be seen in `student_info.h` */ 
     return students == expected_students;
 }
 
