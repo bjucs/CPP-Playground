@@ -8,7 +8,11 @@ bool compare(const Student_info& s1, const Student_info& s2) {
     return s1_final < s2_final;
 }
 
-int main() { 
+void sort_by_grade(vector<Student_info>& students) { 
+    sort(students.begin(), students.end(), compare);
+}
+
+bool test_css_out_of_order() { 
     vector<double> hw_scores_1 = {82.3, 90.5};
     vector<double> hw_scores_2 = {99.9, 100, 100, 100};
     vector<double> hw_scores_3 = {28.3, 58.5};
@@ -21,7 +25,17 @@ int main() {
     Student_info s3 = {"Erik", midterm3, final3, hw_scores_3};
 
     vector<Student_info> students = {s1, s2, s3};
-    sort(students.begin(), students.end(), compare);
+    sort_by_grade(students);
 
     display_final_output(students);
+
+    vector<Student_info> expected_students = {s3, s1, s2};
+    return students == expected_students;
+}
+
+int main() { 
+    string test_result = test_css_out_of_order() == 1 ? "success" : "failure";
+    cout << "Unit test result: " << test_result << endl;
+
+    return 0;
 }
