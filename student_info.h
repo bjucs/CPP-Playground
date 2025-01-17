@@ -17,7 +17,7 @@ struct Student_info {
     bool operator==(const Student_info& other) const {
         if (name != other.name) return false;
 
-        // Compare midterm and final scores with some tolerance for floating-point comparisons
+        // Epsilon is used to allow for some small floating-point error margin
         const double epsilon = 1e-9; 
         if (fabs(midterm - other.midterm) > epsilon) return false;
         if (fabs(final - other.final) > epsilon) return false;
