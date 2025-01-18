@@ -29,9 +29,14 @@ void display_final_output(vector<Student_info> students) {
     cout << setprecision(3);
 
     for (auto it = students.begin(); it != students.end(); it++) { 
-        cout << endl;
-        cout << "Student name: " << it->name << endl;
-        cout << "Student final grade: " << calculate_final_grade(it->midterm, it->final, get_median(it->homework)) << endl;
+        try { 
+            double midterm = it->midterm, final = it->final, hw = get_median(it->homework);
+            cout << endl;
+            cout << "Student name: " << it->name << endl;
+            cout << "Student final grade: " << calculate_final_grade(midterm, final, hw) << endl;
+        } catch (domain_error) { 
+            cout << "Student did not turn in any homework" << endl; 
+        }
     }
 
     setprecision(prec);
