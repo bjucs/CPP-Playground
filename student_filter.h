@@ -4,12 +4,12 @@
 #include <stdexcept>
 #include <list>
 #include "student_info.h"
-#include "median.h"
+#include "utils/median.h"
 
 using std::list;
 
 double grade(const Student_info& s) { 
-    return 0.2 * s.midterm + 0.4 * s.final + 0.4 * get_median(s.homework);
+    return (0.2 * s.midterm) + (0.4 * s.final) + (0.4 * get_median(s.homework));
 }
 
 bool failing_grade(const Student_info& s) { 
