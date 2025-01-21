@@ -13,7 +13,7 @@ double grade(const Student_info& s) {
 }
 
 bool failing_grade(const Student_info& s) { 
-    return grade(s) > 60;
+    return grade(s) < 60;
 }
 
 /* Using `list` instead of `vector` allows us to use std::erase in O(1) while
