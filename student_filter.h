@@ -1,7 +1,6 @@
 #ifndef STUDENT_F
 #define STUDENT_F
 
-#include <stdexcept>
 #include <list>
 #include "student_info.h"
 #include "utils/median.h"
